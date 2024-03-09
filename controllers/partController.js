@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const { body } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 
 const Part = require("../models/part");
 const Brand = require("../models/brand");
@@ -47,7 +47,7 @@ exports.part_create_post = [
         .isLength({ min:1 })
         .escape(),
 
-    body("Brand")
+    body("Brand", "Brand must not be empty")
         .trim()
         .isLength({ min: 1})
         .escape(),
@@ -55,7 +55,10 @@ exports.part_create_post = [
 
 
     asyncHandler(async (req, res, next) => {
-        console.log(req.body.name);
+        console.log(req.body);
+        const brandName = await Part.findById(req.body._id).populate("brand");
+        console.log(brandName + "hi");
+
         const part = new Part({
             name: req.body.name,
             type: req.body.type,

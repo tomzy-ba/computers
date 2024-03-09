@@ -9,17 +9,19 @@
         <form method="post" action="">
             <div class="forms">
                 <label for="name">Name:</label>
-                <input id="name" name="name" type="text" placeholder="Name of Part">
+                <input id="name" name="name" type="text">
             </div>
 
             <div class="forms">
                 <label for="type">Type:</label>
-                <input id="type" name="type" type="text" placeholder="Type of Part">
+                <input id="type" name="type" type="text">
             </div>
 
             <div class="forms">
-                <label for="brand">Brand:</label>
-                <input type="text" name="brand" id="brand" >
+                <% brands.forEach(brand => { %>
+                    <label for=""><%= brand.name %></label>
+                    <input type="checkbox" name="brand" value="<%= brand._id %>">
+                <% }) %>
             </div>
             <button type="submit">Submit</button>
         </form>
