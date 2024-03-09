@@ -1,9 +1,23 @@
 var express = require('express');
 var router = express.Router();
 
+
+const part_controller = require("../controllers/partController");
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get("/", part_controller.index);
+
+router.get("/part/create", part_controller.part_create_get);
+
+router.post("/part/create", )
+
+
+
+
+router.get("/parts", part_controller.part_list);
+
+
+
+
 
 module.exports = router;
