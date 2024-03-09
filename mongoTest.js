@@ -24,7 +24,7 @@ async function main() {
   console.log("Debug: About to connect");
   await mongoose.connect(mongoDB);
   console.log("Debug: Should be connected?");
-  await brandCreate();
+  await partCreate("nvidia RTX 4080", "GPU", "Nvidia");
   console.log("Debug: Closing mongoose");
   mongoose.connection.close();
 }
@@ -32,15 +32,20 @@ async function main() {
 // We pass the index to the ...Create functions so that, for example,
 // genre[0] will always be the Fantasy genre, regardless of the order
 // in which the elements of promise.all's argument complete.
-async function brandCreate(index, name) {
-  const brand = new Brand({
-    name: "Nvidia",
-    location: "loltown",
-    CEO: "Elon",
-    foundedYear: "2024"
+async function partCreate(name, type, brand) {
+  const part = new Part({
+    name: name,
+    type: type,
+    brand: brand._id,
   });
-  await brand.save();
-  brands[index] = brand;
-  console.log(`Added Brand: ${name}`);
+  await part.save();
+  part[index] = part;
+  console.log(`Added Part: ${name}`);
 }
 
+async function brandCreate() {
+  const brand = new Brand({
+    name: "Nvidia",
+    location: "US",
+  })
+}

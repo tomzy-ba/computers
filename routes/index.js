@@ -9,7 +9,7 @@ router.get("/", part_controller.index);
 
 router.get("/part/create", part_controller.part_create_get);
 
-router.post("/part/create", )
+router.post("/part/create", part_controller.part_create_post);
 
 
 

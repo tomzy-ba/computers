@@ -29,10 +29,28 @@ exports.part_create_get = asyncHandler(async (req, res, next) => {
 
     res.render("part_form", {
         title: "Add a Part",
-        type: allParts,
-        brand: allBrands,
+        types: allParts,
+        brands: allBrands,
     });
 });
+
+
+exports.part_create_post = [
+
+    asyncHandler(async (req, res, next) => {
+        console.log(req.body.name);
+        const part = new Part({
+            name: req.body.name,
+            type: req.body.type,
+            brand: req.body.brand,
+        });
+
+        await part.save();
+        res.redirect("/");
+    }),
+
+
+];
 
 
 exports.part_list = asyncHandler(async (req, res, next) => {
