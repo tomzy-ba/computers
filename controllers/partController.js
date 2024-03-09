@@ -1,8 +1,8 @@
+const asyncHandler = require("express-async-handler");
+const { body } = require("express-validator");
+
 const Part = require("../models/part");
 const Brand = require("../models/brand");
-
-const asyncHandler = require("express-async-handler");
-
 
 exports.index = asyncHandler(async (req, res, next) => {
     // get parts, and brands
@@ -36,6 +36,23 @@ exports.part_create_get = asyncHandler(async (req, res, next) => {
 
 
 exports.part_create_post = [
+
+    body("name", "Name must not be empty")
+        .trim()
+        .isLength({ min:1 })
+        .escape(),
+
+    body("type", "Type must not be empty")
+        .trim()
+        .isLength({ min:1 })
+        .escape(),
+
+    body("Brand")
+        .trim()
+        .isLength({ min: 1})
+        .escape(),
+    
+
 
     asyncHandler(async (req, res, next) => {
         console.log(req.body.name);

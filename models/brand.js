@@ -4,8 +4,6 @@ const Schema = mongoose.Schema;
 const BrandSchema = new Schema({
     name: { 
         type: String,
-        required: true,
-        enum: ["Intel", "AMD", "Nvidia", "ASUS", "Corsair", "HyperX", "Other"],
     },
     location: { type: String, required: true, maxLength: 20},
     CEO: {type: String, maxLength: 40},
