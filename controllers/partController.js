@@ -83,19 +83,16 @@ exports.part_list = asyncHandler(async (req, res, next) => {
 
 
 exports.part_detail = asyncHandler(async (req, res, next) => {
-    const part = await Promise.all(
-        Part.findById(req.params.id).populate("type").populate("name").exec(),
-    );
-    if (part === null) {
-        const err = new Error("not found");
-        err.status = 404;
-        return next(err);
-    }
+    const part = await Part.findById(req.params.id).populate("brand").exec()
+
     res.render("part_detail", {
         name: part.name,
-
+        type: part.type,
+        brand: part.brand,
     })
 })
+
+
 
 
 exports.book_delete_get = asyncHandler(async (req, res, next) => {

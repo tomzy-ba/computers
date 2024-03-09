@@ -11,7 +11,9 @@ router.get("/part/create", part_controller.part_create_get);
 
 router.post("/part/create", part_controller.part_create_post);
 
-router.get("/part/:id/delete", )
+router.get("/part/:id", part_controller.part_detail);
+
+router.get("/part/:id/delete", );
 
 
 
