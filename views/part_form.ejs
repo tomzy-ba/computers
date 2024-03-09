@@ -23,7 +23,30 @@
                     <input type="checkbox" name="brand" value="<%= brand._id %>">
                 <% }) %>
             </div>
+
+            <div class="forms">
+                <select name="rating" id="">
+                    <option value="<%= %>">One</option>
+                    <option value="<%= %>">Two</option>
+                    <option value="<%= %>">Three</option>
+                    <option value="<%= %>">Four</option>
+                    <option value="<%= %>">Five</option>
+                </select>
+            </div>
+
+            <div class="forms">
+                <p>Description</p>
+                <input type="text" name="desc" id="desc">
+            </div>
             <button type="submit">Submit</button>
         </form>
     </body>
 </html>
+
+
+<style>
+    #desc {
+        width: 400px;
+        height: 200px;
+    }
+</style>

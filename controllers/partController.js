@@ -22,14 +22,14 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 exports.part_create_get = asyncHandler(async (req, res, next) => {
-    const [allParts, allBrands] = await Promise.all([
+    const [allTypes, allBrands] = await Promise.all([
         Part.find().sort({ name: 1 }).exec(),
         Brand.find().sort({ name: 1 }).exec(),
     ]);
 
     res.render("part_form", {
         title: "Add a Part",
-        types: allParts,
+        types: allTypes,
         brands: allBrands,
     });
 });
@@ -55,14 +55,14 @@ exports.part_create_post = [
 
 
     asyncHandler(async (req, res, next) => {
-        console.log(req.body);
+        console.log(req.body.desc);
         const brandName = await Part.findById(req.body._id).populate("brand");
-        console.log(brandName + "hi");
 
         const part = new Part({
             name: req.body.name,
             type: req.body.type,
             brand: req.body.brand,
+            desc: req.body.desc,
         });
 
         await part.save();
@@ -89,6 +89,7 @@ exports.part_detail = asyncHandler(async (req, res, next) => {
         name: part.name,
         type: part.type,
         brand: part.brand,
+        desc: part.desc,
     })
 })
 

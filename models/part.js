@@ -9,7 +9,8 @@ const PartSchema = new Schema({
         enum: ["CPU", "GPU", "RAM", "MotherBoard", "PSU"],
     },
     brand: { type: Schema.Types.ObjectId, ref: "Brand", },
-    desc: {type: String, required: true, maxLength: 255},
+    rating: { type: Number, max: 5},
+    desc: {type: String, required: true, maxLength: 1000},
 });
 
 PartSchema.virtual("url").get(function () {

@@ -5,7 +5,7 @@ const BrandSchema = new Schema({
     name: { type: String },
     location: { type: String, required: true, maxLength: 20},
     CEO: {type: String, maxLength: 40},
-    foundedYear: {type: Number},
+    foundYear: {type: Number},
 });
 
 BrandSchema.virtual("url").get(function () {
