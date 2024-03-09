@@ -74,12 +74,11 @@ exports.part_create_post = [
 
 
 exports.part_list = asyncHandler(async (req, res, next) => {
-    const allParts = await Part.find({}, "name type")
-    .sort({ name: 1 })
-    .populate("type")
-    .exec();
+    const allParts = await Part.find()
+    .populate("brand")
+    .exec()
 
-    res.render("part_list", {title: "Part List", part_list: allParts});
+    res.render("part_list", { title: "Parts", partProps: allParts });
 });
 
 
@@ -98,3 +97,6 @@ exports.part_detail = asyncHandler(async (req, res, next) => {
     })
 })
 
+
+exports.book_delete_get = asyncHandler(async (req, res, next) => {
+})
