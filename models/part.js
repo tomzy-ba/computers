@@ -9,7 +9,7 @@ const PartSchema = new Schema({
         enum: ["CPU", "GPU", "RAM", "MotherBoard", "PSU"],
     },
     brand: { type: Schema.Types.ObjectId, ref: "Brand", },
-    rating: { type: Number, max: 5},
+    rating: { type: Number,min: 1, max: 5},
     desc: {type: String, required: true, maxLength: 1000},
 });
 

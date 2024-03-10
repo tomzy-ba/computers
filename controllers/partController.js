@@ -62,6 +62,7 @@ exports.part_create_post = [
             name: req.body.name,
             type: req.body.type,
             brand: req.body.brand,
+            rating: req.body.rating,
             desc: req.body.desc,
         });
 
@@ -89,6 +90,7 @@ exports.part_detail = asyncHandler(async (req, res, next) => {
         name: part.name,
         type: part.type,
         brand: part.brand,
+        rating: part.rating,
         desc: part.desc,
     })
 })

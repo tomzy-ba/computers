@@ -8,10 +8,11 @@
         <h1><%= title %></h1>
         <div>
             <% partProps.forEach(prop => { %>
-                <div>
-                    <p id="propname"> <%= prop.name %></p>
-                    <p><%= prop.type %></p>
-                    <p><%= prop.brand.name %></p>
+                <div class="maindiv">
+                    <a href="/part/<%= prop._id %>"><p id="propname"> <%= prop.name %></p></a>
+                    <span class="prop"><%= prop.type %></span>
+                    <span class="prop"><%= prop.brand.name %></span>
+                    <p class="stars"><%= "⭐".repeat(prop.rating) %></p>
                 </div>
             <% }) %>
         </div>
@@ -19,11 +20,21 @@
 </html>
 
 <style>
-    div, p{
+    .maindiv {
+        border: 2px solid grey;
+        padding: 0 10px;
+    }
+    .prop {
         border: 1px solid black;
-        padding: 10px;
+        margin : 10px;
+        padding: 4px;
+        border-radius: 5px;
     }
     #propname {
         font-weight: bold;
+    }
+    .stars {
+        font-size: 30px;
+        padding: 0;
     }
 </style>

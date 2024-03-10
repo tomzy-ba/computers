@@ -7,10 +7,31 @@
 </head>
 <body>
     <h1><%= name %></h1>
-    <h2><%= type %></h2>
-    <h2><%= brand.name %></h2>
+    <div>
+        <h2><%= type %></h2>
+        <h2><%= brand.name %></h2>
+    </div>
+
     <article><%= desc %></article>
-    <% console.log(desc) %>
-    
 </body>
 </html>
+
+
+
+<style>
+    h1 {
+        padding: 0;
+    }
+    div {
+        display: flex;
+    }
+    div * {
+        margin: 5px;
+        padding: 3px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    article {
+        margin: 20px;
+    }
+</style>
