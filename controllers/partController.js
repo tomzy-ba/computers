@@ -67,7 +67,7 @@ exports.part_create_post = [
         });
 
         await part.save();
-        res.redirect("/");
+        res.redirect(part.url);
     }),
 
 
@@ -109,3 +109,31 @@ exports.brand_list = asyncHandler(async (req, res, next) => {
         brand_list: allBrands, 
     });
 });
+
+
+exports.brand_create_get = (req, res, next) => {
+    res.render("brand_form", {title: "Add Brand"});
+};
+
+
+exports.brand_create_post = 
+
+[
+    body("name")
+        .trim()
+        .isLength({ min: 3 })
+        .escape(),
+
+    asyncHandler(async (req, res, next) => {
+        const brand = new Brand({
+            name: req.body.name,
+            location: req.body.location,
+            CEO: req.body.CEO,
+            foundYear: req.body.foundYear,
+        })
+
+
+        res.redirect("brand.url")
+    })
+
+]
