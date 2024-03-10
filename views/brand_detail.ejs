@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= brand.name %></title>
+</head>
+<body>
+    <h1><%= brand.name %></h1>
+
+    <div class="maindiv">
+        <p class="label">Location:</p>
+        <p><%= brand.location %></p>
+
+        <p class="label">CEO:</p>
+        <p><%= brand.CEO %></p>
+
+        <p class="label">Founded:</p>
+        <p><%= brand.foundYear %></p>
+    </div>
+
+</body>
+</html>
+
+
+
+<style>
+    .label {
+        font-weight: bold;
+    }
+</style>

@@ -111,6 +111,17 @@ exports.brand_list = asyncHandler(async (req, res, next) => {
 });
 
 
+exports.brand_detail = asyncHandler(async (req, res, next) => {
+    console.log(req.params.id.length)
+    const brand = await Brand.findById(req.params.id).exec();
+    console.log(brand)
+
+    res.render("brand_detail", {
+        brand: brand,
+    });
+});
+
+
 exports.brand_create_get = (req, res, next) => {
     res.render("brand_form", {title: "Add Brand"});
 };
@@ -133,7 +144,7 @@ exports.brand_create_post =
         })
 
 
-        res.redirect("brand.url")
+        res.redirect(brand.url)
     })
 
 ]

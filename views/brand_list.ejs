@@ -8,7 +8,7 @@
 <body>
     <h1><%= title %></h1>
     <% brand_list.forEach(brand => { %>
-        <p><%= brand.name %></p>
+        <a href="/brand/<%= brand._id %>"><%= brand.name %></a>
     <% }) %>
     
 </body>

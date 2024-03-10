@@ -23,6 +23,8 @@ router.get("/brand/create", part_controller.brand_create_get);
 
 router.post("/brand/create", part_controller.brand_create_post);
 
+router.get("/brand/:id", part_controller.brand_detail);
+
 
 
 
