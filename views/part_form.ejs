@@ -9,17 +9,17 @@
         <form method="post" action="">
             <div class="forms">
                 <label for="name">Name:</label>
-                <input id="name" name="name" type="text">
+                <input id="name" name="name" type="text" required>
             </div>
 
             <div class="forms">
                 <label for="type">Type:</label>
-                <input id="type" name="type" type="text">
+                <input id="type" name="type" type="text" required>
             </div>
 
             <div class="forms">
                 <% brands.forEach(brand => { %>
-                    <label for=""><%= brand.name %></label>
+                    <label for=""><%= brand.name %>:</label>
                     <input type="checkbox" name="brand" value="<%= brand._id %>">
                 <% }) %>
             </div>
@@ -37,7 +37,7 @@
 
             <div class="forms">
                 <p>Description:</p>
-                <input type="text" name="desc" id="desc">
+                <textarea type="text" name="desc" id="desc"></textarea>
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -49,5 +49,8 @@
     #desc {
         width: 400px;
         height: 200px;
+    }
+    form {
+        margin: 20px;
     }
 </style>

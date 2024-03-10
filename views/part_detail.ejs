@@ -8,10 +8,13 @@
 <body>
     <h1><%= name %></h1>
     <div>
-        <h2><%= type %></h2>
-        <h2><%= brand.name %></h2>
+        <h2>Type:<%= type %></h2>
+        <h2>Brand:<%= brand.name %></h2>
     </div>
+    <p>Rating:</p>
+    <p class="stars"><%= "⭐".repeat(rating) %></p>
 
+    <p>Description:</p>
     <article><%= desc %></article>
 </body>
 </html>
@@ -19,11 +22,9 @@
 
 
 <style>
-    h1 {
-        padding: 0;
-    }
     div {
         display: flex;
+        margin: 20px 10px;
     }
     div * {
         margin: 5px;
@@ -33,5 +34,8 @@
     }
     article {
         margin: 20px;
+    }
+    .stars {
+        font-size: 40px;
     }
 </style>
