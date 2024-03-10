@@ -15,10 +15,9 @@ router.get("/part/:id", part_controller.part_detail);
 
 router.get("/part/:id/delete", );
 
-
-
-
 router.get("/parts", part_controller.part_list);
+
+router.get("/brands", part_controller.brand_list)
 
 
 

@@ -100,3 +100,12 @@ exports.part_detail = asyncHandler(async (req, res, next) => {
 
 exports.book_delete_get = asyncHandler(async (req, res, next) => {
 })
+
+
+exports.brand_list = asyncHandler(async (req, res, next) => {
+    const allBrands = await Brand.find().sort({name: 1}).exec();
+    res.render("brand_list", {
+        title: "Brand List",
+        brand_list: allBrands, 
+    });
+});
