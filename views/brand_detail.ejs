@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= brand.name %></title>
+    <title></title>
 </head>
 <body>
     <h1><%= brand.name %></h1>
@@ -17,6 +17,14 @@
 
         <p class="label">Founded:</p>
         <p><%= brand.foundYear %></p>
+    </div>
+
+    <div class="parts">
+        <% parts.forEach(part => { %>
+            <p>
+                <a href="/part/<%= part._id %>"><%=part.name %></a>
+            </p>
+        <% }) %>
     </div>
 
 </body>

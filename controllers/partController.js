@@ -112,12 +112,12 @@ exports.brand_list = asyncHandler(async (req, res, next) => {
 
 
 exports.brand_detail = asyncHandler(async (req, res, next) => {
-    console.log(req.params.id.length)
     const brand = await Brand.findById(req.params.id).exec();
-    console.log(brand)
+    const parts = await Part.find({brand: req.params.id});
 
     res.render("brand_detail", {
         brand: brand,
+        parts: parts,
     });
 });
 
@@ -143,8 +143,8 @@ exports.brand_create_post =
             foundYear: req.body.foundYear,
         })
 
-
-        res.redirect(brand.url)
+        await brand.save();
+        res.redirect(brand.url);
     })
 
 ]
