@@ -17,6 +17,8 @@ router.get("/part/:id/delete", part_controller.part_delete_get);
 
 router.get("/part/:id/update", part_controller.part_update_get);
 
+router.post("/part/:id/update", part_controller.part_update_post);
+
 router.get("/parts", part_controller.part_list);
 
 router.get("/brands", part_controller.brand_list);

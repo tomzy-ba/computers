@@ -55,7 +55,6 @@ exports.part_create_post = [
 
 
     asyncHandler(async (req, res, next) => {
-        const brandName = await Part.findById(req.body._id).populate("brand");
 
         const part = new Part({
             name: req.body.name,
@@ -117,7 +116,7 @@ exports.part_update_get = asyncHandler(async (req, res, next) => {
 })
 
 
-exports.part_create_post = [
+exports.part_update_post = [
 
     body("name", "Name must not be empty")
         .trim()
@@ -137,7 +136,6 @@ exports.part_create_post = [
 
 
     asyncHandler(async (req, res, next) => {
-        const brandName = await Part.findById(req.body._id).populate("brand");
 
         const part = new Part({
             name: req.body.name,
@@ -145,9 +143,10 @@ exports.part_create_post = [
             brand: req.body.brand,
             rating: req.body.rating,
             desc: req.body.desc,
+            _id: req.params.id,
         });
 
-        await part.save();
+        await Part.findByIdAndUpdate(req.params.id, part);
         res.redirect(part.url);
     }),
 
