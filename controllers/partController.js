@@ -55,7 +55,6 @@ exports.part_create_post = [
 
 
     asyncHandler(async (req, res, next) => {
-        console.log(req.body.desc);
         const brandName = await Part.findById(req.body._id).populate("brand");
 
         const part = new Part({
@@ -79,7 +78,7 @@ exports.part_list = asyncHandler(async (req, res, next) => {
     .populate("brand")
     .exec()
 
-    res.render("part_list", { title: "Parts", partProps: allParts });
+    res.render("part_list", { title: "Parts", parts: allParts });
 });
 
 
@@ -92,14 +91,68 @@ exports.part_detail = asyncHandler(async (req, res, next) => {
         brand: part.brand,
         rating: part.rating,
         desc: part.desc,
+        id: part._id,
     })
 })
 
 
 
 
-exports.book_delete_get = asyncHandler(async (req, res, next) => {
+exports.part_delete_get = asyncHandler(async (req, res, next) => {
+    await Part.findByIdAndDelete(req.params.id);
+
+    res.redirect("/parts")
 })
+
+
+exports.part_update_get = asyncHandler(async (req, res, next) => {
+    const part = await Part.findById(req.params.id).populate("brand").exec();
+    const brands = await Brand.find();
+
+    res.render("part_form", {
+        title: "Update Part",
+        brands: brands,
+        part: part,
+    })
+})
+
+
+exports.part_create_post = [
+
+    body("name", "Name must not be empty")
+        .trim()
+        .isLength({ min:1 })
+        .escape(),
+
+    body("type", "Type must not be empty")
+        .trim()
+        .isLength({ min:1 })
+        .escape(),
+
+    body("Brand", "Brand must not be empty")
+        .trim()
+        .isLength({ min: 1})
+        .escape(),
+    
+
+
+    asyncHandler(async (req, res, next) => {
+        const brandName = await Part.findById(req.body._id).populate("brand");
+
+        const part = new Part({
+            name: req.body.name,
+            type: req.body.type,
+            brand: req.body.brand,
+            rating: req.body.rating,
+            desc: req.body.desc,
+        });
+
+        await part.save();
+        res.redirect(part.url);
+    }),
+
+
+];
 
 
 exports.brand_list = asyncHandler(async (req, res, next) => {

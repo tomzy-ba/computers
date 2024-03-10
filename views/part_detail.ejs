@@ -10,6 +10,8 @@
     <div>
         <h2>Type:<%= type %></h2>
         <h2>Brand:<%= brand.name %></h2>
+        <a href="/part/<%= id %>/delete">Remove</a>
+        <a href="/part/<%= id %>/update">Update</a>
     </div>
     <p>Rating:</p>
     <p class="stars"><%= "⭐".repeat(rating) %></p>

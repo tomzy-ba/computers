@@ -7,12 +7,14 @@
     <body>
         <h1><%= title %></h1>
         <div>
-            <% partProps.forEach(prop => { %>
+            <% parts.forEach(part => { %>
                 <div class="maindiv">
-                    <a href="/part/<%= prop._id %>"><p id="propname"> <%= prop.name %></p></a>
-                    <span class="prop"><%= prop.type %></span>
-                    <span class="prop"><%= prop.brand.name %></span>
-                    <p class="stars"><%= "⭐".repeat(prop.rating) %></p>
+                    <a href="/part/<%= part._id %>"><p id="partname"> <%= part.name %></p></a>
+                    <span class="part"><%= part.type %></span>
+                    <span class="part"><%= part.brand.name %></span>
+                    <p class="stars"><%= "⭐".repeat(part.rating) %></p>
+                    <a href="/part/<%= part._id %>/update">Update</a>
+                    <a href="/part/<%= part._id %>/delete">Delete</a>
                 </div>
             <% }) %>
         </div>
@@ -24,13 +26,13 @@
         border: 2px solid grey;
         padding: 0 10px;
     }
-    .prop {
+    .part {
         border: 1px solid black;
         margin : 10px;
         padding: 4px;
         border-radius: 5px;
     }
-    #propname {
+    #partname {
         font-weight: bold;
     }
     .stars {
